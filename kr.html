@@ -12,7 +12,7 @@
             --secondary: #03dac6;
             --error: #ff5252;
             --warning: #ffd740;
-            --text-dim: #444; /* Warna untuk elemen non-aktif */
+            --text-dim: #444; 
             --text-active: #888;
         }
 
@@ -103,7 +103,7 @@
 </head>
 <body onclick="initAudio()"> 
     <div class="header">
-        <h2 style="margin:0; font-size: 14px; letter-spacing: 1px;"><span style="color:var(--primary)"></span> <span style="color:var(--text-active)"></span></h2>
+        <h2 style="margin:0; font-size: 14px; letter-spacing: 1px;"><span style="color:var(--primary)">MOTO</span> <span style="color:var(--text-active)">CARE</span></h2>
         <div class="header-actions">
             <button class="fs-btn" onclick="openSettings()" style="border-color: var(--primary); color: var(--primary);">⚙️ SETTINGS</button>
             <button class="fs-btn" onclick="toggleFS()">⛶ FS</button>
@@ -160,21 +160,32 @@
     let audioCtx = null, audioInterval = null, isAudioInitialized = false;
 
     const partConfig = [
+        // MESIN & TRANSMISI
         { id: 'oliM', name: 'Oli Mesin', icon: '🛢️', area: 'engine' },
         { id: 'oliG', name: 'Oli Gardan', icon: '💧', area: 'engine' },
-        { id: 'cvt', name: ' CVT', icon: '⚙️', area: 'engine' },
+        { id: 'radiator', name: 'Radiator', icon: '🌡️', area: 'engine' },
+        { id: 'ac_comp', name: 'AC', icon: '❄️', area: 'engine' },
+        { id: 'cvt', name: 'CVT', icon: '⚙️', area: 'engine' },
         { id: 'tBelt', name: 'Timing Belt', icon: '🎗️', area: 'engine' },
         { id: 'filter', name: 'Filter Udara', icon: '🌬️', area: 'engine' },
-        { id: 'masterR', name: 'Master Rem', icon: '✊', area: 'engine' },
+        { id: 'speedo', name: 'Speedometer', icon: '⏲️', area: 'engine' },
+        
+        // KAKI-KAKI
+        { id: 'masterR', name: 'Master Rem', icon: '✊', area: 'wheel' },
+        { id: 'rumahM', name: 'Rumah Master', icon: '🏠', area: 'wheel' },
         { id: 'remF', name: 'Kampas Depan', icon: '🛑', area: 'wheel' },
         { id: 'tireF', name: 'Ban Depan', icon: '🔘', area: 'wheel' },
         { id: 'remR', name: 'Kampas Blkg', icon: '🛑', area: 'wheel' },
         { id: 'tireR', name: 'Ban Belakang', icon: '🔘', area: 'wheel' },
+        
+        // KELISTRIKAN
         { id: 'aki', name: 'Aki', icon: '🔋', area: 'electric' },
         { id: 'lightF', name: 'Lampu Dpn', icon: '💡', area: 'electric' },
         { id: 'lightR', name: 'Lampu Blk', icon: '🚨', area: 'electric' },
         { id: 'signL', name: 'Sein L', icon: '⬅️', area: 'electric' },
-        { id: 'signR', name: 'Sein R', icon: '➡️', area: 'electric' }
+        { id: 'signR', name: 'Sein R', icon: '➡️', area: 'electric' },
+        { id: 'swLeft', name: 'M-Switch Kiri', icon: '🕹️', area: 'electric' },
+        { id: 'swRight', name: 'M-Switch Kanan', icon: '🕹️', area: 'electric' }
     ];
 
     function initAudio() {
@@ -289,9 +300,9 @@
 
     async function togglePart(id, isOff) {
         if (isOff) {
-            savedLimits[id] = 30; // Aktifkan ke default 30 hari
+            savedLimits[id] = 30; 
         } else {
-            savedLimits[id] = 0; // LANGSUNG SET 0 (OFF)
+            savedLimits[id] = 0; 
         }
         localStorage.setItem('motoLimitsV4', JSON.stringify(savedLimits));
         render();
